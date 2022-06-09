@@ -1,6 +1,6 @@
 {
   "name": "bookfinder",
-  "homepage": "https://MichalDziuba.github.io/BookFinder",
+  "homepage": "https://MichalDziuba.github.io/bookfinder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
