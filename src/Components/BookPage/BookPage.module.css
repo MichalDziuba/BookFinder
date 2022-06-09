@@ -1,0 +1,35 @@
+.book__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.book__title{
+    font-size: 26px;
+    font-weight: 700;
+}
+.book__image{
+    width: 240px;
+    height: 300px;
+}
+.book__item{
+    font-size: 20px;
+}
+.authors__list{
+    list-style-type:circle;
+    display: flex;
+    flex-direction: column;
+}
+.book__button{
+    font-size: 15px;
+    height: 35px;
+    border:none;
+    font-weight: 300;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: rgba(33, 150, 243, 1);
+    color: white;
+}
+.book__button:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.navigation{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.navigation_Link{
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+  
+}
