@@ -1,1 +1,1 @@
-https://michaldziuba.github.io/BookFinder/
+https://michaldziuba.github.io/bookfinder/
