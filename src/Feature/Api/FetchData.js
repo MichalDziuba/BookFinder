@@ -1,4 +1,5 @@
 import axios from "axios";
+import Notiflix from "notiflix";
 const baseURL = "https://gnikdroy.pythonanywhere.com/api/";
 export const api = axios.create({ baseURL });
 
@@ -6,7 +7,7 @@ export async function fetchData({
   keyword,
   author,
   title,
-  subject,
+  description,
   currentPage,
   setLoading,
   setBooks,
@@ -43,12 +44,14 @@ export async function fetchData({
                 response = await api.get(`/book/?title_contains=${title}&page=${currentPage}`);
           }
     }
-      if (subject) {
+      if (description) {
       response = await api.get(
-        `/book/?description_contains=${subject}`
+        `/book/?description_contains=${description}`
           );
-          if (currentPage && subject) { 
-                response = await api.get(`/book/?description_contains=${subject}&page=${currentPage}`);
+          if (currentPage && description) { 
+                response = await api.get(
+                  `/book/?description_contains=${description}&page=${currentPage}`
+                );
           }
     }
       if (author && title) {
@@ -60,25 +63,29 @@ export async function fetchData({
                 response = await api.get(`/book/?agent_name_contains=${author}&title_contains=${title}&page=${currentPage}`);
           }
     }
-      if (author && subject) {
-
-      response = await api.get(
-        `/book/?agent_name_contains=${author}&description_contains=${subject}`
+      if (author && description) {
+        response = await api.get(
+          `/book/?agent_name_contains=${author}&description_contains=${description}`
+        );
+        if (currentPage && author && description) {
+          response = await api.get(
+            `/book/?agent_name_contains=${author}&description_contains=${description}&page=${currentPage}`
           );
-          if (currentPage && author && subject) { 
-                response = await api.get(`/book/?agent_name_contains=${author}&description_contains=${subject}&page=${currentPage}`);
-          }
-    }
-      if (title && subject) {
-
-      response = await api.get(
-        `/book/?title_contains=${title}&description_contains=${subject}`
+        }
+      }
+      if (title && description) {
+        response = await api.get(
+          `/book/?title_contains=${title}&description_contains=${description}`
+        );
+        if (currentPage && title && description) {
+          response = await api.get(
+            `/book/?title_contains=${title}&description_contains=${description}&page=${currentPage}`
           );
-          if (currentPage && title && subject) { 
-                response = await api.get(`/book/?title_contains=${title}&description_contains=${subject}&page=${currentPage}`);
-          }
+        }
+      }
+    if (response.data.count ===0) {
+      Notiflix.Notify.failure("Sorry, we didn't find anything! :( ")
     }
-
     setBooks(response.data.results);
     setTotalPages(response.data.count);
     setLoading(false);

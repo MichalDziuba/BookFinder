@@ -16,7 +16,7 @@ export const SearchPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
-  const [subject, setSubject] = useState();
+  const [description, setDescription] = useState();
 
   const searching = (e) => { //For search in 'Quick search'
 
@@ -25,7 +25,7 @@ export const SearchPage = () => {
     const input = document.querySelector("input").value;
     setAuthor();
     setTitle();
-    setSubject();
+    setDescription();
     setKeyword(input);
     form.reset();
   };
@@ -39,12 +39,12 @@ export const SearchPage = () => {
     setKeyword();
     setAuthor(inputAuthor);
     setTitle(inputTitle);
-    setSubject(inputDescription);
+    setDescription(inputDescription);
     form.reset();
   };
 
   useEffect(() => {
-    if (keyword===null&&books===null&&author===null&&title===null&&subject===null) {
+    if (keyword===null&&books===null&&author===null&&title===null&&description===null) {
      return
     }
      
@@ -53,13 +53,13 @@ export const SearchPage = () => {
       keyword: keyword,
       author: author,
       title: title,
-      subject: subject,
+      description: description,
       currentPage: currentPage,
       setLoading: setLoading,
       setBooks: setBooks,
       setTotalPages: setTotalPages,
     });
-  }, [keyword, currentPage, author, title, subject]);
+  }, [keyword, currentPage, author, title, description]);
 
   const setPage = (page) => { // For pagination
     setCurrentPage(page);
